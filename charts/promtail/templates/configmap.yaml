@@ -52,7 +52,7 @@ data:
         source_labels:
         - __meta_kubernetes_pod_container_name
         target_label: container
-      - replacement: /var/log/vmware-vmsvc.*.log
+      - replacement: /var/log/pods/*$1/*.log
         separator: /
         source_labels:
         - __meta_kubernetes_pod_uid
@@ -99,7 +99,7 @@ data:
         source_labels:
         - __meta_kubernetes_pod_container_name
         target_label: container
-      - replacement: /var/log/vmware-vmsvc.*.log
+      - replacement: /var/log/pods/*$1/*.log
         separator: /
         source_labels:
         - __meta_kubernetes_pod_uid
@@ -207,7 +207,7 @@ data:
         source_labels:
         - __meta_kubernetes_pod_container_name
         target_label: container
-      - replacement: /var/log/vmware-vmsvc.*.log
+      - replacement: /var/log/pods/*$1/*.log
         separator: /
         source_labels:
         - __meta_kubernetes_pod_uid
@@ -255,7 +255,7 @@ data:
         source_labels:
         - __meta_kubernetes_pod_container_name
         target_label: container
-      - replacement: /var/log/vmware-vmsvc.*.log
+      - replacement: /var/log/pods/*$1/*.log
         separator: /
         source_labels:
         - __meta_kubernetes_pod_annotation_kubernetes_io_config_mirror

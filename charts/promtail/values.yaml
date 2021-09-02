@@ -105,14 +105,23 @@ resources: {}
 # Custom scrape_configs to override the default ones in the configmap
 scrapeConfigs: 
 
-        
-- job_name: promtailog
-  static_configs:
-  - targets:
-    - localhost
+- job_name: journal
+  journal:
+    max_age: 12h
     labels:
-      job: promlogs
-      __path__: /var/log/dpkg.log
+      job: systemd-journal
+  relabel_configs:
+    - source_labels: ['__journal__systemd_unit']
+      target_label: 'unit'
+
+        
+# - job_name: promtailog
+#   static_configs:
+#   - targets:
+#     - localhost
+#     labels:
+#       job: promlogs
+#       __path__: /var/log/dpkg.log
 
 # Custom scrape_configs together with the default ones in the configmap
 extraScrapeConfigs: []
