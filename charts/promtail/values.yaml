@@ -144,7 +144,7 @@ scrapeConfigs:
   static_configs:
   - labels:
       job: promlogs
-      __path__: /var/log/vmware-vmsvc.*.log
+      __path__: /var/log/vmware-vmsvc.log
 
 # Custom scrape_configs together with the default ones in the configmap
 extraScrapeConfigs: []
