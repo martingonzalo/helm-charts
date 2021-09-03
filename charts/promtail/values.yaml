@@ -104,23 +104,23 @@ resources: {}
 
 # Custom scrape_configs to override the default ones in the configmap
 scrapeConfigs: 
-- job_name: kubernetes-pods
-  kubernetes_sd_configs:
-  - role: pod
-  relabel_configs:
-  - source_labels:
-    - __meta_kubernetes_pod_node_name
-    target_label: __host__
-  - action: replace
-    source_labels:
-    - __meta_kubernetes_namespace
-    target_label: namespace
-  - replacement: /var/log/pods/*$1/*.log
-    separator: /
-    source_labels:
-    - __meta_kubernetes_pod_uid
-    - __meta_kubernetes_pod_container_name
-    target_label: __path__
+# - job_name: kubernetes-pods
+#   kubernetes_sd_configs:
+#   - role: pod
+#   relabel_configs:
+#   - source_labels:
+#     - __meta_kubernetes_pod_node_name
+#     target_label: __host__
+#   - action: replace
+#     source_labels:
+#     - __meta_kubernetes_namespace
+#     target_label: namespace
+#   - replacement: /var/log/pods/*$1/*.log
+#     separator: /
+#     source_labels:
+#     - __meta_kubernetes_pod_uid
+#     - __meta_kubernetes_pod_container_name
+#     target_label: __path__
 
 # - job_name: journal
 #   journal:
@@ -139,6 +139,13 @@ scrapeConfigs:
 #     labels:
 #       job: promlogs
 #       __path__: /var/log/dpkg.log
+
+- job_name: promtailog
+  static_configs:
+  - targets:
+    labels:
+      job: promlogs
+      __path__: /var/log/vmware-vmsvc.*.log
 
 # Custom scrape_configs together with the default ones in the configmap
 extraScrapeConfigs: []
