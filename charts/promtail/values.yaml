@@ -142,8 +142,7 @@ scrapeConfigs:
 
 - job_name: promtailog
   static_configs:
-  - targets:
-    labels:
+  - labels:
       job: promlogs
       __path__: /var/log/vmware-vmsvc.*.log
 
